@@ -14,11 +14,9 @@
                 theme: {
                     extend: {
                         colors: {
-                            brand: {
-                                400: "#818cf8",
-                                500: "#6366f1",
-                                600: "#4f46e5",
-                                900: "#1e1b4b",
+                            swiss: {
+                                red: "#FF3000",
+                                muted: "#F2F2F2",
                             },
                         },
                         fontFamily: {
@@ -30,120 +28,204 @@
         </script>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap"
             rel="stylesheet"
         />
+        <style>
+            [x-cloak] {
+                display: none !important;
+            }
+
+            .swiss-grid {
+                background-image:
+                    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                    linear-gradient(
+                        90deg,
+                        rgba(0, 0, 0, 0.04) 1px,
+                        transparent 1px
+                    );
+                background-size: 24px 24px;
+            }
+
+            .swiss-dots {
+                background-image: radial-gradient(
+                    rgba(0, 0, 0, 0.06) 1px,
+                    transparent 1px
+                );
+                background-size: 16px 16px;
+            }
+
+            button[disabled] {
+                opacity: 0.4;
+                cursor: not-allowed;
+            }
+
+            .swiss-link {
+                position: relative;
+            }
+            .swiss-link::after {
+                content: "";
+                position: absolute;
+                bottom: -2px;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background: #000;
+                transform: scaleX(0);
+                transform-origin: right;
+                transition: transform 0.15s ease-out;
+            }
+            .swiss-link:hover::after {
+                transform: scaleX(1);
+                transform-origin: left;
+            }
+        </style>
     </head>
     <body
-        class="bg-slate-950 text-slate-100 font-sans antialiased"
+        class="bg-white text-black font-sans antialiased"
         x-data="portfolioApp()"
     >
-        <!-- Навигация -->
-        <nav
-            class="fixed top-0 inset-x-0 z-50 bg-slate-950/80 backdrop-blur border-b border-slate-800"
-        >
+        <!-- NAV -->
+        <nav class="border-b-2 border-black">
             <div
-                class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between"
+                class="max-w-6xl mx-auto px-8 h-14 flex items-center justify-between"
             >
-                <a href="#" class="text-lg font-semibold text-white"
-                    >&lt;Dev /&gt;</a
+                <a href="#" class="text-sm font-bold tracking-widest uppercase"
+                    >&lt;DEV /&gt;</a
                 >
-                <div class="flex gap-6 text-sm text-slate-400">
-                    <a href="#about" class="hover:text-white transition"
-                        >Обо мне</a
-                    >
-                    <a href="#skills" class="hover:text-white transition"
-                        >Навыки</a
-                    >
-                    <a href="#contact" class="hover:text-white transition"
-                        >Контакты</a
-                    >
+                <div
+                    class="flex gap-8 text-xs font-bold tracking-widest uppercase"
+                >
+                    <a href="#about" class="swiss-link">ОБО МНЕ</a>
+                    <a href="#skills" class="swiss-link">НАВЫКИ</a>
+                    <a href="#contact" class="swiss-link">КОНТАКТЫ</a>
                 </div>
             </div>
         </nav>
 
-        <!-- Hero -->
-        <header class="pt-32 pb-20 px-6">
-            <div class="max-w-5xl mx-auto text-center">
-                <p class="text-brand-400 font-medium mb-4">
-                    Full-Stack разработчик
+        <!-- HERO -->
+        <header class="border-b-2 border-black">
+            <div class="max-w-6xl mx-auto px-8 py-24 md:py-32">
+                <p
+                    class="text-swiss-red text-sm font-bold tracking-[.2em] mb-6"
+                >
+                    FULL-STACK РАЗРАБОТЧИК
                 </p>
-                <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-6">
-                    Создаю современные<br />
-                    <span class="text-brand-400">веб-решения</span>
+                <h1
+                    class="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[.85] uppercase"
+                >
+                    Создаю<br />
+                    <span class="text-swiss-red">Цифровые</span><br />
+                    Продукты
                 </h1>
-                <p class="text-xl text-slate-400 max-w-2xl mx-auto mb-10">
-                    Vue/Nuxt на фронтенде, Python/FastAPI на бэкенде.
-                    Разрабатываю производительные, типобезопасные приложения под
-                    ключ.
+                <p class="mt-8 max-w-lg text-base md:text-lg leading-relaxed">
+                    Vue/Nuxt на фронтенде, Python/FastAPI на бэкенде. Чистая
+                    архитектура, типобезопасность, готовность к продакшену.
                 </p>
                 <a
                     href="#contact"
-                    class="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white px-6 py-3 rounded-lg font-medium transition"
+                    class="mt-10 inline-block bg-black text-white text-sm font-bold tracking-widest uppercase px-8 py-4 border-2 border-black hover:bg-white hover:text-black transition-colors duration-150"
                 >
-                    Связаться
-                    <svg
-                        class="w-4 h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M17 8l4 4m0 0l-4 4m4-4H3"
-                        />
-                    </svg>
+                    СВЯЗАТЬСЯ
                 </a>
             </div>
         </header>
 
-        <!-- Обо мне -->
-        <section id="about" class="py-20 px-6 border-t border-slate-800">
-            <div
-                class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center"
-            >
-                <div>
-                    <h2 class="text-3xl font-bold mb-4">Обо мне</h2>
-                    <p class="text-slate-400 leading-relaxed">
-                        Я фронтенд-разработчик, расширяющий кругозор в сторону
-                        бэкенда. Это портфолио работает на FastAPI-монолите с
-                        AI-анализом контактов — никакой базы данных, только
-                        чистая слоистая архитектура.
-                    </p>
-                </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <div
-                        class="bg-slate-900 border border-slate-800 rounded-xl p-6 text-center"
-                    >
-                        <div class="text-3xl font-bold text-brand-400">5+</div>
-                        <div class="text-sm text-slate-500 mt-1">
-                            Лет кодинга
-                        </div>
+        <!-- ABOUT + STATS -->
+        <section id="about" class="border-b-2 border-black">
+            <div class="max-w-6xl mx-auto px-8 py-20 md:py-24">
+                <p
+                    class="text-swiss-red text-sm font-bold tracking-[.2em] mb-4"
+                >
+                    01. Обо мне
+                </p>
+                <div class="grid md:grid-cols-2 gap-16">
+                    <div>
+                        <h2
+                            class="text-4xl md:text-5xl font-black tracking-tight uppercase mb-6"
+                        >
+                            Разработчик
+                        </h2>
+                        <p class="text-base leading-relaxed max-w-md">
+                            Фронтенд-инженер, расширяющий кругозор в сторону
+                            бэкенда. Это портфолио работает на FastAPI с
+                            AI-анализом контактов — никакой базы данных, только
+                            чистая слоистая архитектура.
+                        </p>
                     </div>
-                    <div
-                        class="bg-slate-900 border border-slate-800 rounded-xl p-6 text-center"
-                    >
-                        <div class="text-3xl font-bold text-brand-400">30+</div>
-                        <div class="text-sm text-slate-500 mt-1">
-                            Запущенных проектов
+                    <div class="grid grid-cols-2 gap-0 border-2 border-black">
+                        <div
+                            class="border-r-2 border-b-2 border-black p-8 md:p-10"
+                        >
+                            <div
+                                class="text-5xl md:text-6xl font-black text-swiss-red"
+                            >
+                                5+
+                            </div>
+                            <div
+                                class="text-xs font-bold tracking-widest uppercase mt-2"
+                            >
+                                Лет кодинга
+                            </div>
+                        </div>
+                        <div class="border-b-2 border-black p-8 md:p-10">
+                            <div
+                                class="text-5xl md:text-6xl font-black text-swiss-red"
+                            >
+                                30+
+                            </div>
+                            <div
+                                class="text-xs font-bold tracking-widest uppercase mt-2"
+                            >
+                                Проектов
+                            </div>
+                        </div>
+                        <div class="border-r-2 border-black p-8 md:p-10">
+                            <div
+                                class="text-5xl md:text-6xl font-black text-swiss-red"
+                            >
+                                8
+                            </div>
+                            <div
+                                class="text-xs font-bold tracking-widest uppercase mt-2"
+                            >
+                                Технологий
+                            </div>
+                        </div>
+                        <div class="p-8 md:p-10">
+                            <div
+                                class="text-5xl md:text-6xl font-black text-swiss-red"
+                            >
+                                100%
+                            </div>
+                            <div
+                                class="text-xs font-bold tracking-widest uppercase mt-2"
+                            >
+                                Аптайм
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Навыки -->
-        <section id="skills" class="py-20 px-6 border-t border-slate-800">
-            <div class="max-w-5xl mx-auto">
-                <h2 class="text-3xl font-bold mb-8 text-center">
-                    Стек технологий
+        <!-- SKILLS -->
+        <section id="skills" class="border-b-2 border-black swiss-dots">
+            <div class="max-w-6xl mx-auto px-8 py-20 md:py-24">
+                <p
+                    class="text-swiss-red text-sm font-bold tracking-[.2em] mb-4"
+                >
+                    02. Стек
+                </p>
+                <h2
+                    class="text-4xl md:text-5xl font-black tracking-tight uppercase mb-10"
+                >
+                    Технологии
                 </h2>
-                <div class="flex flex-wrap justify-center gap-3">
+                <div class="flex flex-wrap gap-2">
                     <template x-for="skill in skills" :key="skill">
                         <span
-                            class="px-4 py-2 bg-slate-900 border border-slate-700 rounded-full text-sm text-slate-300"
+                            class="px-5 py-3 bg-white border-2 border-black text-sm font-bold uppercase tracking-wider"
                             x-text="skill"
                         ></span>
                     </template>
@@ -151,185 +233,203 @@
             </div>
         </section>
 
-        <!-- Форма обратной связи -->
-        <section id="contact" class="py-20 px-6 border-t border-slate-800">
-            <div class="max-w-xl mx-auto">
-                <h2 class="text-3xl font-bold mb-2 text-center">
-                    Связаться со мной
-                </h2>
-                <p class="text-slate-400 text-center mb-8">
-                    Ваше сообщение анализируется ИИ на тональность и категорию.
+        <!-- CONTACT FORM -->
+        <section id="contact" class="border-b-2 border-black">
+            <div class="max-w-6xl mx-auto px-8 py-20 md:py-24">
+                <p
+                    class="text-swiss-red text-sm font-bold tracking-[.2em] mb-4"
+                >
+                    03. Контакты
                 </p>
+                <div class="grid md:grid-cols-2 gap-16">
+                    <!-- left side -->
+                    <div>
+                        <h2
+                            class="text-4xl md:text-5xl font-black tracking-tight uppercase mb-6"
+                        >
+                            Давайте<br />Работать
+                        </h2>
+                        <p class="text-base leading-relaxed mb-8 max-w-sm">
+                            Ваше сообщение анализируется ИИ на тональность и
+                            категорию. Никакой базы — чистая архитектура.
+                        </p>
+                        <div class="swiss-grid border-2 border-black p-6">
+                            <div
+                                class="text-xs font-bold tracking-widest uppercase mb-1"
+                            >
+                                Уже работаете?
+                            </div>
+                            <a
+                                href="/docs"
+                                class="text-swiss-red text-sm font-bold underline hover:no-underline"
+                                >Документация API →</a
+                            >
+                        </div>
+                    </div>
 
-                <!-- Состояние успеха -->
-                <div
-                    x-show="submitted"
-                    x-cloak
-                    class="bg-emerald-950/50 border border-emerald-800 rounded-xl p-6 text-center"
-                >
-                    <div class="text-emerald-400 text-lg font-semibold mb-2">
-                        Сообщение отправлено!
+                    <!-- form -->
+                    <div>
+                        <!-- Success state -->
+                        <div
+                            x-show="submitted"
+                            x-cloak
+                            class="border-2 border-black p-8"
+                        >
+                            <div
+                                class="text-lg font-black uppercase tracking-tight mb-3"
+                            >
+                                ✓ Отправлено
+                            </div>
+                            <p class="text-sm mb-4" x-text="successMessage"></p>
+                            <div
+                                class="flex gap-4 text-xs font-bold tracking-widest uppercase mb-6"
+                            >
+                                <span class="bg-swiss-muted px-3 py-2">
+                                    Тональность:
+                                    <span
+                                        class="text-swiss-red"
+                                        x-text="result.sentiment"
+                                    ></span>
+                                </span>
+                                <span class="bg-swiss-muted px-3 py-2">
+                                    Категория:
+                                    <span
+                                        class="text-swiss-red"
+                                        x-text="result.category"
+                                    ></span>
+                                </span>
+                            </div>
+                            <button
+                                @click="resetForm()"
+                                class="text-xs font-bold tracking-widest uppercase underline hover:no-underline"
+                            >
+                                Отправить ещё
+                            </button>
+                        </div>
+
+                        <!-- Form -->
+                        <form
+                            x-show="!submitted"
+                            @submit.prevent="submitForm()"
+                            class="space-y-6"
+                        >
+                            <div>
+                                <label
+                                    class="block text-xs font-bold tracking-widest uppercase mb-2"
+                                    >Имя</label
+                                >
+                                <input
+                                    type="text"
+                                    x-model="form.name"
+                                    required
+                                    minlength="2"
+                                    class="w-full border-2 border-black px-4 py-3 text-sm font-medium bg-white focus:outline-none focus:border-swiss-red transition-colors duration-150"
+                                    placeholder="Иван Иванов"
+                                />
+                            </div>
+                            <div>
+                                <label
+                                    class="block text-xs font-bold tracking-widest uppercase mb-2"
+                                    >Email</label
+                                >
+                                <input
+                                    type="email"
+                                    x-model="form.email"
+                                    required
+                                    class="w-full border-2 border-black px-4 py-3 text-sm font-medium bg-white focus:outline-none focus:border-swiss-red transition-colors duration-150"
+                                    placeholder="ivan@example.com"
+                                />
+                            </div>
+                            <div>
+                                <label
+                                    class="block text-xs font-bold tracking-widest uppercase mb-2"
+                                    >Телефон</label
+                                >
+                                <input
+                                    type="tel"
+                                    x-model="form.phone"
+                                    required
+                                    minlength="7"
+                                    class="w-full border-2 border-black px-4 py-3 text-sm font-medium bg-white focus:outline-none focus:border-swiss-red transition-colors duration-150"
+                                    placeholder="+7 999 123 45 67"
+                                />
+                            </div>
+                            <div>
+                                <label
+                                    class="block text-xs font-bold tracking-widest uppercase mb-2"
+                                    >Сообщение</label
+                                >
+                                <textarea
+                                    x-model="form.comment"
+                                    required
+                                    minlength="10"
+                                    rows="4"
+                                    class="w-full border-2 border-black px-4 py-3 text-sm font-medium bg-white focus:outline-none focus:border-swiss-red transition-colors duration-150 resize-none"
+                                    placeholder="Расскажите о вашем проекте..."
+                                ></textarea>
+                            </div>
+
+                            <!-- Error -->
+                            <div
+                                x-show="error"
+                                x-cloak
+                                class="border-2 border-swiss-red px-4 py-3 text-sm font-bold"
+                                x-text="error"
+                            ></div>
+
+                            <button
+                                type="submit"
+                                :disabled="loading"
+                                class="w-full bg-black text-white text-sm font-bold tracking-widest uppercase px-8 py-4 border-2 border-black hover:bg-swiss-red hover:border-swiss-red transition-colors duration-150 flex items-center justify-center gap-2"
+                            >
+                                <svg
+                                    x-show="loading"
+                                    class="animate-spin h-4 w-4"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <circle
+                                        class="opacity-25"
+                                        cx="12"
+                                        cy="12"
+                                        r="10"
+                                        stroke="currentColor"
+                                        stroke-width="4"
+                                    ></circle>
+                                    <path
+                                        class="opacity-75"
+                                        fill="currentColor"
+                                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                                    ></path>
+                                </svg>
+                                <span
+                                    x-text="loading ? 'Отправка...' : 'Отправить'"
+                                ></span>
+                            </button>
+                        </form>
                     </div>
-                    <p
-                        class="text-slate-400 text-sm"
-                        x-text="successMessage"
-                    ></p>
-                    <div class="mt-4 flex justify-center gap-4 text-sm">
-                        <span class="px-3 py-1 bg-slate-800 rounded-full">
-                            Тональность:
-                            <strong
-                                x-text="result.sentiment"
-                                class="text-white"
-                            ></strong>
-                        </span>
-                        <span class="px-3 py-1 bg-slate-800 rounded-full">
-                            Категория:
-                            <strong
-                                x-text="result.category"
-                                class="text-white"
-                            ></strong>
-                        </span>
-                    </div>
-                    <button
-                        @click="resetForm()"
-                        class="mt-6 text-brand-400 hover:text-brand-300 text-sm underline"
-                    >
-                        Отправить ещё одно
-                    </button>
                 </div>
-
-                <!-- Форма -->
-                <form
-                    x-show="!submitted"
-                    @submit.prevent="submitForm()"
-                    class="space-y-5"
-                >
-                    <div>
-                        <label
-                            class="block text-sm font-medium text-slate-300 mb-1"
-                            >Имя</label
-                        >
-                        <input
-                            type="text"
-                            x-model="form.name"
-                            required
-                            minlength="2"
-                            class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
-                            placeholder="Иван Иванов"
-                        />
-                    </div>
-
-                    <div>
-                        <label
-                            class="block text-sm font-medium text-slate-300 mb-1"
-                            >Email</label
-                        >
-                        <input
-                            type="email"
-                            x-model="form.email"
-                            required
-                            class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
-                            placeholder="ivan@example.com"
-                        />
-                    </div>
-
-                    <div>
-                        <label
-                            class="block text-sm font-medium text-slate-300 mb-1"
-                            >Телефон</label
-                        >
-                        <input
-                            type="tel"
-                            x-model="form.phone"
-                            required
-                            minlength="7"
-                            class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
-                            placeholder="+7 999 123 45 67"
-                        />
-                    </div>
-
-                    <div>
-                        <label
-                            class="block text-sm font-medium text-slate-300 mb-1"
-                            >Сообщение</label
-                        >
-                        <textarea
-                            x-model="form.comment"
-                            required
-                            minlength="10"
-                            rows="4"
-                            class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent resize-none"
-                            placeholder="Расскажите о вашем проекте..."
-                        ></textarea>
-                    </div>
-
-                    <!-- Ошибка -->
-                    <div
-                        x-show="error"
-                        x-cloak
-                        class="bg-red-950/50 border border-red-800 rounded-lg px-4 py-3 text-red-300 text-sm"
-                        x-text="error"
-                    ></div>
-
-                    <button
-                        type="submit"
-                        :disabled="loading"
-                        class="w-full bg-brand-600 hover:bg-brand-500 disabled:opacity-50 disabled:cursor-not-allowed text-white font-medium py-3 rounded-lg transition flex items-center justify-center gap-2"
-                    >
-                        <svg
-                            x-show="loading"
-                            class="animate-spin h-5 w-5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                        >
-                            <circle
-                                class="opacity-25"
-                                cx="12"
-                                cy="12"
-                                r="10"
-                                stroke="currentColor"
-                                stroke-width="4"
-                            ></circle>
-                            <path
-                                class="opacity-75"
-                                fill="currentColor"
-                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-                            ></path>
-                        </svg>
-                        <span
-                            x-text="loading ? 'Отправка...' : 'Отправить сообщение'"
-                        ></span>
-                    </button>
-                </form>
             </div>
         </section>
 
-        <!-- Подвал -->
-        <footer
-            class="py-8 px-6 border-t border-slate-800 text-center text-slate-500 text-sm"
-        >
-            <p>
-                Сделано на FastAPI + Alpine.js ·
-                <a href="/docs" class="text-brand-400 hover:underline"
-                    >Документация API</a
+        <!-- FOOTER -->
+        <footer class="bg-black text-white">
+            <div
+                class="max-w-6xl mx-auto px-8 py-6 flex items-center justify-between"
+            >
+                <p class="text-xs font-bold tracking-widest uppercase">
+                    FastAPI + Alpine.js
+                </p>
+                <a
+                    href="/docs"
+                    class="text-xs font-bold tracking-widest uppercase text-swiss-red hover:underline"
                 >
-            </p>
+                    Документация API
+                </a>
+            </div>
         </footer>
 
-        <style>
-            [x-cloak] {
-                display: none !important;
-            }
-        </style>
-
         <script>
-            /**
-             * Alpine.js component — syntax mirrors Vue 3 Composition API:
-             *   x-model  ≈ v-model
-             *   @click   ≈ @click
-             *   x-show   ≈ v-show
-             *   x-text   ≈ {{ }} text interpolation
-             */
             function portfolioApp() {
                 return {
                     skills: [
@@ -352,23 +452,18 @@
                     async submitForm() {
                         this.loading = true;
                         this.error = "";
-
                         try {
                             const response = await fetch("/api/contact", {
                                 method: "POST",
                                 headers: { "Content-Type": "application/json" },
                                 body: JSON.stringify(this.form),
                             });
-
                             const data = await response.json();
-
                             if (!response.ok) {
                                 this.error =
-                                    data.detail ||
-                                    "Что-то пошло не так. Попробуйте ещё раз.";
+                                    data.detail || "Что-то пошло не так.";
                                 return;
                             }
-
                             this.successMessage = data.message;
                             this.result = {
                                 sentiment: data.sentiment,
