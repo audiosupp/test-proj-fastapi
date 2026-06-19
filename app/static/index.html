@@ -1,236 +1,400 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Developer Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: { 400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 900: '#1e1b4b' },
-          },
-          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
-        },
-      },
-    };
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-</head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased" x-data="portfolioApp()">
+<!doctype html>
+<html lang="ru" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Портфолио разработчика</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script
+            defer
+            src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+        ></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            brand: {
+                                400: "#818cf8",
+                                500: "#6366f1",
+                                600: "#4f46e5",
+                                900: "#1e1b4b",
+                            },
+                        },
+                        fontFamily: {
+                            sans: ["Inter", "system-ui", "sans-serif"],
+                        },
+                    },
+                },
+            };
+        </script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body
+        class="bg-slate-950 text-slate-100 font-sans antialiased"
+        x-data="portfolioApp()"
+    >
+        <!-- Навигация -->
+        <nav
+            class="fixed top-0 inset-x-0 z-50 bg-slate-950/80 backdrop-blur border-b border-slate-800"
+        >
+            <div
+                class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between"
+            >
+                <a href="#" class="text-lg font-semibold text-white"
+                    >&lt;Dev /&gt;</a
+                >
+                <div class="flex gap-6 text-sm text-slate-400">
+                    <a href="#about" class="hover:text-white transition"
+                        >Обо мне</a
+                    >
+                    <a href="#skills" class="hover:text-white transition"
+                        >Навыки</a
+                    >
+                    <a href="#contact" class="hover:text-white transition"
+                        >Контакты</a
+                    >
+                </div>
+            </div>
+        </nav>
 
-  <!-- Navigation -->
-  <nav class="fixed top-0 inset-x-0 z-50 bg-slate-950/80 backdrop-blur border-b border-slate-800">
-    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="#" class="text-lg font-semibold text-white">&lt;Dev /&gt;</a>
-      <div class="flex gap-6 text-sm text-slate-400">
-        <a href="#about" class="hover:text-white transition">About</a>
-        <a href="#skills" class="hover:text-white transition">Skills</a>
-        <a href="#contact" class="hover:text-white transition">Contact</a>
-      </div>
-    </div>
-  </nav>
+        <!-- Hero -->
+        <header class="pt-32 pb-20 px-6">
+            <div class="max-w-5xl mx-auto text-center">
+                <p class="text-brand-400 font-medium mb-4">
+                    Full-Stack разработчик
+                </p>
+                <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-6">
+                    Создаю современные<br />
+                    <span class="text-brand-400">веб-решения</span>
+                </h1>
+                <p class="text-xl text-slate-400 max-w-2xl mx-auto mb-10">
+                    Vue/Nuxt на фронтенде, Python/FastAPI на бэкенде.
+                    Разрабатываю производительные, типобезопасные приложения под
+                    ключ.
+                </p>
+                <a
+                    href="#contact"
+                    class="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white px-6 py-3 rounded-lg font-medium transition"
+                >
+                    Связаться
+                    <svg
+                        class="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                    </svg>
+                </a>
+            </div>
+        </header>
 
-  <!-- Hero -->
-  <header class="pt-32 pb-20 px-6">
-    <div class="max-w-5xl mx-auto text-center">
-      <p class="text-brand-400 font-medium mb-4">Full-Stack Developer</p>
-      <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-6">
-        Building modern web<br />
-        <span class="text-brand-400">experiences</span>
-      </h1>
-      <p class="text-xl text-slate-400 max-w-2xl mx-auto mb-10">
-        Vue/Nuxt on the frontend, Python/FastAPI on the backend.
-        I craft performant, type-safe applications end to end.
-      </p>
-      <a href="#contact"
-         class="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-500 text-white px-6 py-3 rounded-lg font-medium transition">
-        Get in touch
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-        </svg>
-      </a>
-    </div>
-  </header>
+        <!-- Обо мне -->
+        <section id="about" class="py-20 px-6 border-t border-slate-800">
+            <div
+                class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center"
+            >
+                <div>
+                    <h2 class="text-3xl font-bold mb-4">Обо мне</h2>
+                    <p class="text-slate-400 leading-relaxed">
+                        Я фронтенд-разработчик, расширяющий кругозор в сторону
+                        бэкенда. Это портфолио работает на FastAPI-монолите с
+                        AI-анализом контактов — никакой базы данных, только
+                        чистая слоистая архитектура.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div
+                        class="bg-slate-900 border border-slate-800 rounded-xl p-6 text-center"
+                    >
+                        <div class="text-3xl font-bold text-brand-400">5+</div>
+                        <div class="text-sm text-slate-500 mt-1">
+                            Лет кодинга
+                        </div>
+                    </div>
+                    <div
+                        class="bg-slate-900 border border-slate-800 rounded-xl p-6 text-center"
+                    >
+                        <div class="text-3xl font-bold text-brand-400">30+</div>
+                        <div class="text-sm text-slate-500 mt-1">
+                            Запущенных проектов
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <!-- About -->
-  <section id="about" class="py-20 px-6 border-t border-slate-800">
-    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-      <div>
-        <h2 class="text-3xl font-bold mb-4">About Me</h2>
-        <p class="text-slate-400 leading-relaxed">
-          I'm a frontend-focused developer expanding into backend engineering.
-          This portfolio is powered by a FastAPI monolith with AI-integrated
-          contact analysis — no database, just clean layered architecture.
-        </p>
-      </div>
-      <div class="grid grid-cols-2 gap-4">
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 text-center">
-          <div class="text-3xl font-bold text-brand-400">5+</div>
-          <div class="text-sm text-slate-500 mt-1">Years coding</div>
-        </div>
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 text-center">
-          <div class="text-3xl font-bold text-brand-400">30+</div>
-          <div class="text-sm text-slate-500 mt-1">Projects shipped</div>
-        </div>
-      </div>
-    </div>
-  </section>
+        <!-- Навыки -->
+        <section id="skills" class="py-20 px-6 border-t border-slate-800">
+            <div class="max-w-5xl mx-auto">
+                <h2 class="text-3xl font-bold mb-8 text-center">
+                    Стек технологий
+                </h2>
+                <div class="flex flex-wrap justify-center gap-3">
+                    <template x-for="skill in skills" :key="skill">
+                        <span
+                            class="px-4 py-2 bg-slate-900 border border-slate-700 rounded-full text-sm text-slate-300"
+                            x-text="skill"
+                        ></span>
+                    </template>
+                </div>
+            </div>
+        </section>
 
-  <!-- Skills -->
-  <section id="skills" class="py-20 px-6 border-t border-slate-800">
-    <div class="max-w-5xl mx-auto">
-      <h2 class="text-3xl font-bold mb-8 text-center">Tech Stack</h2>
-      <div class="flex flex-wrap justify-center gap-3">
-        <template x-for="skill in skills" :key="skill">
-          <span class="px-4 py-2 bg-slate-900 border border-slate-700 rounded-full text-sm text-slate-300"
-                x-text="skill"></span>
-        </template>
-      </div>
-    </div>
-  </section>
+        <!-- Форма обратной связи -->
+        <section id="contact" class="py-20 px-6 border-t border-slate-800">
+            <div class="max-w-xl mx-auto">
+                <h2 class="text-3xl font-bold mb-2 text-center">
+                    Связаться со мной
+                </h2>
+                <p class="text-slate-400 text-center mb-8">
+                    Ваше сообщение анализируется ИИ на тональность и категорию.
+                </p>
 
-  <!-- Contact Form -->
-  <section id="contact" class="py-20 px-6 border-t border-slate-800">
-    <div class="max-w-xl mx-auto">
-      <h2 class="text-3xl font-bold mb-2 text-center">Contact Me</h2>
-      <p class="text-slate-400 text-center mb-8">
-        Your message is analyzed by AI for sentiment &amp; category.
-      </p>
+                <!-- Состояние успеха -->
+                <div
+                    x-show="submitted"
+                    x-cloak
+                    class="bg-emerald-950/50 border border-emerald-800 rounded-xl p-6 text-center"
+                >
+                    <div class="text-emerald-400 text-lg font-semibold mb-2">
+                        Сообщение отправлено!
+                    </div>
+                    <p
+                        class="text-slate-400 text-sm"
+                        x-text="successMessage"
+                    ></p>
+                    <div class="mt-4 flex justify-center gap-4 text-sm">
+                        <span class="px-3 py-1 bg-slate-800 rounded-full">
+                            Тональность:
+                            <strong
+                                x-text="result.sentiment"
+                                class="text-white"
+                            ></strong>
+                        </span>
+                        <span class="px-3 py-1 bg-slate-800 rounded-full">
+                            Категория:
+                            <strong
+                                x-text="result.category"
+                                class="text-white"
+                            ></strong>
+                        </span>
+                    </div>
+                    <button
+                        @click="resetForm()"
+                        class="mt-6 text-brand-400 hover:text-brand-300 text-sm underline"
+                    >
+                        Отправить ещё одно
+                    </button>
+                </div>
 
-      <!-- Success state -->
-      <div x-show="submitted" x-cloak
-           class="bg-emerald-950/50 border border-emerald-800 rounded-xl p-6 text-center">
-        <div class="text-emerald-400 text-lg font-semibold mb-2">Message sent!</div>
-        <p class="text-slate-400 text-sm" x-text="successMessage"></p>
-        <div class="mt-4 flex justify-center gap-4 text-sm">
-          <span class="px-3 py-1 bg-slate-800 rounded-full">
-            Sentiment: <strong x-text="result.sentiment" class="text-white"></strong>
-          </span>
-          <span class="px-3 py-1 bg-slate-800 rounded-full">
-            Category: <strong x-text="result.category" class="text-white"></strong>
-          </span>
-        </div>
-        <button @click="resetForm()"
-                class="mt-6 text-brand-400 hover:text-brand-300 text-sm underline">
-          Send another message
-        </button>
-      </div>
+                <!-- Форма -->
+                <form
+                    x-show="!submitted"
+                    @submit.prevent="submitForm()"
+                    class="space-y-5"
+                >
+                    <div>
+                        <label
+                            class="block text-sm font-medium text-slate-300 mb-1"
+                            >Имя</label
+                        >
+                        <input
+                            type="text"
+                            x-model="form.name"
+                            required
+                            minlength="2"
+                            class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+                            placeholder="Иван Иванов"
+                        />
+                    </div>
 
-      <!-- Form -->
-      <form x-show="!submitted" @submit.prevent="submitForm()" class="space-y-5">
-        <div>
-          <label class="block text-sm font-medium text-slate-300 mb-1">Name</label>
-          <input type="text" x-model="form.name" required minlength="2"
-                 class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
-                 placeholder="Jane Doe" />
-        </div>
+                    <div>
+                        <label
+                            class="block text-sm font-medium text-slate-300 mb-1"
+                            >Email</label
+                        >
+                        <input
+                            type="email"
+                            x-model="form.email"
+                            required
+                            class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+                            placeholder="ivan@example.com"
+                        />
+                    </div>
 
-        <div>
-          <label class="block text-sm font-medium text-slate-300 mb-1">Email</label>
-          <input type="email" x-model="form.email" required
-                 class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
-                 placeholder="jane@example.com" />
-        </div>
+                    <div>
+                        <label
+                            class="block text-sm font-medium text-slate-300 mb-1"
+                            >Телефон</label
+                        >
+                        <input
+                            type="tel"
+                            x-model="form.phone"
+                            required
+                            minlength="7"
+                            class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+                            placeholder="+7 999 123 45 67"
+                        />
+                    </div>
 
-        <div>
-          <label class="block text-sm font-medium text-slate-300 mb-1">Phone</label>
-          <input type="tel" x-model="form.phone" required minlength="7"
-                 class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
-                 placeholder="+1 555 123 4567" />
-        </div>
+                    <div>
+                        <label
+                            class="block text-sm font-medium text-slate-300 mb-1"
+                            >Сообщение</label
+                        >
+                        <textarea
+                            x-model="form.comment"
+                            required
+                            minlength="10"
+                            rows="4"
+                            class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent resize-none"
+                            placeholder="Расскажите о вашем проекте..."
+                        ></textarea>
+                    </div>
 
-        <div>
-          <label class="block text-sm font-medium text-slate-300 mb-1">Message</label>
-          <textarea x-model="form.comment" required minlength="10" rows="4"
-                    class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent resize-none"
-                    placeholder="Tell me about your project..."></textarea>
-        </div>
+                    <!-- Ошибка -->
+                    <div
+                        x-show="error"
+                        x-cloak
+                        class="bg-red-950/50 border border-red-800 rounded-lg px-4 py-3 text-red-300 text-sm"
+                        x-text="error"
+                    ></div>
 
-        <!-- Error -->
-        <div x-show="error" x-cloak
-             class="bg-red-950/50 border border-red-800 rounded-lg px-4 py-3 text-red-300 text-sm"
-             x-text="error"></div>
+                    <button
+                        type="submit"
+                        :disabled="loading"
+                        class="w-full bg-brand-600 hover:bg-brand-500 disabled:opacity-50 disabled:cursor-not-allowed text-white font-medium py-3 rounded-lg transition flex items-center justify-center gap-2"
+                    >
+                        <svg
+                            x-show="loading"
+                            class="animate-spin h-5 w-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                        >
+                            <circle
+                                class="opacity-25"
+                                cx="12"
+                                cy="12"
+                                r="10"
+                                stroke="currentColor"
+                                stroke-width="4"
+                            ></circle>
+                            <path
+                                class="opacity-75"
+                                fill="currentColor"
+                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                            ></path>
+                        </svg>
+                        <span
+                            x-text="loading ? 'Отправка...' : 'Отправить сообщение'"
+                        ></span>
+                    </button>
+                </form>
+            </div>
+        </section>
 
-        <button type="submit" :disabled="loading"
-                class="w-full bg-brand-600 hover:bg-brand-500 disabled:opacity-50 disabled:cursor-not-allowed text-white font-medium py-3 rounded-lg transition flex items-center justify-center gap-2">
-          <svg x-show="loading" class="animate-spin h-5 w-5" fill="none" viewBox="0 0 24 24">
-            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
-          </svg>
-          <span x-text="loading ? 'Sending...' : 'Send Message'"></span>
-        </button>
-      </form>
-    </div>
-  </section>
+        <!-- Подвал -->
+        <footer
+            class="py-8 px-6 border-t border-slate-800 text-center text-slate-500 text-sm"
+        >
+            <p>
+                Сделано на FastAPI + Alpine.js ·
+                <a href="/docs" class="text-brand-400 hover:underline"
+                    >Документация API</a
+                >
+            </p>
+        </footer>
 
-  <!-- Footer -->
-  <footer class="py-8 px-6 border-t border-slate-800 text-center text-slate-500 text-sm">
-    <p>Built with FastAPI + Alpine.js ·
-      <a href="/docs" class="text-brand-400 hover:underline">API Docs</a>
-    </p>
-  </footer>
-
-  <style>[x-cloak] { display: none !important; }</style>
-
-  <script>
-    /**
-     * Alpine.js component — syntax mirrors Vue 3 Composition API:
-     *   x-model  ≈ v-model
-     *   @click   ≈ @click
-     *   x-show   ≈ v-show
-     *   x-text   ≈ {{ }} text interpolation
-     */
-    function portfolioApp() {
-      return {
-        skills: ['Vue 3', 'Nuxt 3', 'TypeScript', 'Python', 'FastAPI', 'Tailwind CSS', 'Alpine.js', 'Pydantic'],
-        form: { name: '', email: '', phone: '', comment: '' },
-        loading: false,
-        submitted: false,
-        error: '',
-        successMessage: '',
-        result: { sentiment: '', category: '' },
-
-        async submitForm() {
-          this.loading = true;
-          this.error = '';
-
-          try {
-            const response = await fetch('/api/contact', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(this.form),
-            });
-
-            const data = await response.json();
-
-            if (!response.ok) {
-              this.error = data.detail || 'Something went wrong. Please try again.';
-              return;
+        <style>
+            [x-cloak] {
+                display: none !important;
             }
+        </style>
 
-            this.successMessage = data.message;
-            this.result = { sentiment: data.sentiment, category: data.category };
-            this.submitted = true;
-          } catch (err) {
-            this.error = 'Network error. Is the server running?';
-          } finally {
-            this.loading = false;
-          }
-        },
+        <script>
+            /**
+             * Alpine.js component — syntax mirrors Vue 3 Composition API:
+             *   x-model  ≈ v-model
+             *   @click   ≈ @click
+             *   x-show   ≈ v-show
+             *   x-text   ≈ {{ }} text interpolation
+             */
+            function portfolioApp() {
+                return {
+                    skills: [
+                        "Vue 3",
+                        "Nuxt 3",
+                        "TypeScript",
+                        "Python",
+                        "FastAPI",
+                        "Tailwind CSS",
+                        "Alpine.js",
+                        "Pydantic",
+                    ],
+                    form: { name: "", email: "", phone: "", comment: "" },
+                    loading: false,
+                    submitted: false,
+                    error: "",
+                    successMessage: "",
+                    result: { sentiment: "", category: "" },
 
-        resetForm() {
-          this.form = { name: '', email: '', phone: '', comment: '' };
-          this.submitted = false;
-          this.error = '';
-          this.result = { sentiment: '', category: '' };
-        },
-      };
-    }
-  </script>
-</body>
+                    async submitForm() {
+                        this.loading = true;
+                        this.error = "";
+
+                        try {
+                            const response = await fetch("/api/contact", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify(this.form),
+                            });
+
+                            const data = await response.json();
+
+                            if (!response.ok) {
+                                this.error =
+                                    data.detail ||
+                                    "Что-то пошло не так. Попробуйте ещё раз.";
+                                return;
+                            }
+
+                            this.successMessage = data.message;
+                            this.result = {
+                                sentiment: data.sentiment,
+                                category: data.category,
+                            };
+                            this.submitted = true;
+                        } catch (err) {
+                            this.error = "Ошибка сети. Сервер запущен?";
+                        } finally {
+                            this.loading = false;
+                        }
+                    },
+
+                    resetForm() {
+                        this.form = {
+                            name: "",
+                            email: "",
+                            phone: "",
+                            comment: "",
+                        };
+                        this.submitted = false;
+                        this.error = "";
+                        this.result = { sentiment: "", category: "" };
+                    },
+                };
+            }
+        </script>
+    </body>
 </html>
